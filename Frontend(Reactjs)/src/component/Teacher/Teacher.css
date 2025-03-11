@@ -1,0 +1,18 @@
+.teacher {
+  padding: 25px;
+}
+.teacher table {
+  margin: 25px 0;
+}
+.teacher .inner-wrap {
+  display: flex;
+  justify-content: space-between;
+}
+.teacher .inner-wrap button {
+  color: white;
+  background-color: #000;
+  padding: 13px 18px;
+  border-radius: 45px;
+  font-size: 16px;
+  font-weight: 500;
+}

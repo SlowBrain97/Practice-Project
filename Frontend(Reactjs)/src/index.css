@@ -1,0 +1,201 @@
+@import url("https://fonts.googleapis.com/css2?family=Eczar:wght@400..800&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Outfit:wght@100..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600&display=swap");
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Outfit", sans-serif;
+  scroll-behavior: smooth;
+}
+:root {
+  --font-main: "Sora", sans-serif;
+}
+html,
+body {
+  overflow-x: hidden;
+  max-width: 100%;
+}
+@layer utilities {
+  .after-underline {
+    position: relative; /* Cần thêm position relative */
+  }
+  .after-underline::after {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 2px;
+    background-color: rgb(248 250 252); /* slate-50 */
+    bottom: -2px;
+    left: 0;
+    transition: width 300ms ease-in-out;
+  }
+  .after-underline:hover::after {
+    width: 100%;
+  }
+  .custom-underline > * {
+    position: relative;
+  }
+  .custom-underline::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background-color: rgb(248 250 252); /* slate-50 */
+    bottom: -2px;
+    left: 0;
+  }
+}
+@layer utilities {
+  .clip-polygon-with-border {
+    position: relative;
+    clip-path: polygon(0% 0%, 0% 100%, 100% 100%, 100% 45%, 57% 0%);
+  }
+  .clip-polygon-with-border::before {
+    content: "";
+    position: absolute;
+    inset: -1px; /* Độ dày viền */
+    clip-path: polygon(0% 0%, 0% 100%, 100% 100%, 100% 45%, 57% 0%);
+    background: transparent;
+    border: 1px solid rgb(248 250 252); /* Màu viền */
+    z-index: -1;
+  }
+}
+.button-wrapper {
+  position: relative;
+  display: inline-block;
+  padding: 0;
+  overflow: hidden;
+}
+
+/* The button itself */
+.custom-button {
+  position: relative;
+  display: inline-block;
+  padding: 10px 30px;
+  font-size: 16px;
+  font-weight: bold;
+  color: white;
+  background: linear-gradient(to right, #89f9e8, #facb7b);
+  border: none;
+  cursor: pointer;
+  border-radius: 20px; /* Bo góc */
+  -webkit-mask-image: radial-gradient(circle, transparent 70%, black 70%),
+    polygon(0% 0%, 0% 100%, 100% 100%, 100% 44%, 53% 0%);
+  mask-image: radial-gradient(circle, transparent 70%, black 70%),
+    polygon(0% 0%, 0% 100%, 100% 100%, 100% 44%, 53% 0%);
+  -webkit-mask-composite: destination-in;
+  mask-composite: exclude;
+  transition: all 0.3s ease-in-out;
+}
+
+/* Hover effect */
+.custom-button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+.footer-text {
+  @apply text-xl flex flex-col items-center gap-y-2;
+}
+.footer-text a {
+  @apply text-gray-500 cursor-pointer hover:custom-underline hover:after-underline;
+}
+.footer-social img {
+  @apply w-12 h-12 invert cursor-pointer;
+}
+
+@layer utilities {
+  .underline-text {
+    position: relative;
+  }
+  .underline-text::after {
+    content: "";
+    position: absolute;
+    bottom: -10px;
+    left: 0;
+    height: 2px;
+    padding-bottom: 10px;
+    background-color: black;
+    width: 100%;
+  }
+  .custom-title {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 20px;
+  }
+}
+
+
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 224 71.4% 4.1%;
+    --card: 0 0% 100%;
+    --card-foreground: 224 71.4% 4.1%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 224 71.4% 4.1%;
+    --primary: 220.9 39.3% 11%;
+    --primary-foreground: 210 20% 98%;
+    --secondary: 220 14.3% 95.9%;
+    --secondary-foreground: 220.9 39.3% 11%;
+    --muted: 220 14.3% 95.9%;
+    --muted-foreground: 220 8.9% 46.1%;
+    --accent: 220 14.3% 95.9%;
+    --accent-foreground: 220.9 39.3% 11%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 20% 98%;
+    --border: 220 13% 91%;
+    --input: 220 13% 91%;
+    --ring: 224 71.4% 4.1%;
+    --chart-1: 12 76% 61%;
+    --chart-2: 173 58% 39%;
+    --chart-3: 197 37% 24%;
+    --chart-4: 43 74% 66%;
+    --chart-5: 27 87% 67%;
+    --radius: 0.5rem;
+  }
+  .dark {
+    --background: 224 71.4% 4.1%;
+    --foreground: 210 20% 98%;
+    --card: 224 71.4% 4.1%;
+    --card-foreground: 210 20% 98%;
+    --popover: 224 71.4% 4.1%;
+    --popover-foreground: 210 20% 98%;
+    --primary: 210 20% 98%;
+    --primary-foreground: 220.9 39.3% 11%;
+    --secondary: 215 27.9% 16.9%;
+    --secondary-foreground: 210 20% 98%;
+    --muted: 215 27.9% 16.9%;
+    --muted-foreground: 217.9 10.6% 64.9%;
+    --accent: 215 27.9% 16.9%;
+    --accent-foreground: 210 20% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 20% 98%;
+    --border: 215 27.9% 16.9%;
+    --input: 215 27.9% 16.9%;
+    --ring: 216 12.2% 83.9%;
+    --chart-1: 220 70% 50%;
+    --chart-2: 160 60% 45%;
+    --chart-3: 30 80% 55%;
+    --chart-4: 280 65% 60%;
+    --chart-5: 340 75% 55%;
+  }
+}
+
+
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
